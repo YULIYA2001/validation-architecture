@@ -3,6 +3,7 @@ package org.example.testvalidation.validator;
 import jakarta.validation.ValidationException;
 import java.nio.file.AccessDeniedException;
 import java.util.Set;
+import org.example.testvalidation.exceptions.CsvProcessingException;
 import org.example.testvalidation.exceptions.FailedAnnotationValidationException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -22,15 +23,20 @@ public class ExceptionControllerAdvice {
         return ResponseEntity.badRequest().body(exp.getMessage());
     }
 
+    @ExceptionHandler(AccessDeniedException.class)
+    public ResponseEntity<String> handleException(AccessDeniedException ex) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(ex.getMessage());
+    }
+
     /**
      * Обрабатывает кастомные исключения типа {@link FailedAnnotationValidationException}.
      *
-     * @param exp возникшее исключение с ошибками валидации
+     * @param ex возникшее исключение с ошибками валидации
      * @return ResponseEntity с кодом 400 и списком сообщений об ошибках
      */
     @ExceptionHandler(FailedAnnotationValidationException.class)
-    public ResponseEntity<Set<String>> handleException(FailedAnnotationValidationException exp) {
-        return ResponseEntity.badRequest().body(exp.getErrorMessages());
+    public ResponseEntity<Set<String>> handleException(FailedAnnotationValidationException ex) {
+        return ResponseEntity.badRequest().body(ex.getErrorMessages());
     }
 
     /**
@@ -53,17 +59,21 @@ public class ExceptionControllerAdvice {
                 .body("Ошибка конфигурации валидации: " + ex.getMessage() + " Обратитесь к администратору.");
     }
 
-
-    @ExceptionHandler(AccessDeniedException.class)
-    public ResponseEntity<String> handleException(AccessDeniedException exp) {
-        return ResponseEntity
-                .status(HttpStatus.FORBIDDEN)
-                .body("Доступ запрещён. У вас нет прав для выполнения этого действия.");
+    /**
+     * Обрабатывает кастомные исключения типа {@link CsvProcessingException}.
+     *
+     * @param ex возникшее исключение при чтении csv в dto
+     * @return ResponseEntity с кодом 400 и сообщением об ошибке
+     */
+    @ExceptionHandler(CsvProcessingException.class)
+    public ResponseEntity<String> handleCsvProcessingException(CsvProcessingException ex) {
+        log.error("Ошибка при обработке CSV: {}", ex.getMessage(), ex);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body("Ошибка в формате CSV: " + ex.getMessage());
     }
 
     // так НЕ делать
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<String> handleException(Exception exp) {
-        return ResponseEntity.badRequest().body(exp.getMessage());
+    public ResponseEntity<String> handleException(Exception ex) {
+        return ResponseEntity.badRequest().body(ex.getMessage());
     }
 }
