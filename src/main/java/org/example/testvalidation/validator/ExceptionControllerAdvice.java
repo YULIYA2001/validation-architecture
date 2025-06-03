@@ -2,9 +2,10 @@ package org.example.testvalidation.validator;
 
 import jakarta.validation.ValidationException;
 import java.nio.file.AccessDeniedException;
-import java.util.Set;
+import java.util.List;
 import org.example.testvalidation.exceptions.CsvProcessingException;
 import org.example.testvalidation.exceptions.FailedAnnotationValidationException;
+import org.example.testvalidation.validator.error.dto.ValidationErrorMarker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
@@ -35,8 +36,8 @@ public class ExceptionControllerAdvice {
      * @return ResponseEntity с кодом 400 и списком сообщений об ошибках
      */
     @ExceptionHandler(FailedAnnotationValidationException.class)
-    public ResponseEntity<Set<String>> handleException(FailedAnnotationValidationException ex) {
-        return ResponseEntity.badRequest().body(ex.getErrorMessages());
+    public ResponseEntity<List<? extends ValidationErrorMarker>> handleException(FailedAnnotationValidationException ex) {
+        return ResponseEntity.badRequest().body(ex.getErrors());
     }
 
     /**

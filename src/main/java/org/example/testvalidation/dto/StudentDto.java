@@ -1,7 +1,7 @@
 package org.example.testvalidation.dto;
 
 import jakarta.validation.constraints.*;
-import org.example.testvalidation.validator.messages.ValidationMessages;
+import org.example.testvalidation.validator.utils.ValidationMessages;
 import org.example.testvalidation.validator.utils.ValidationRegexps;
 import org.hibernate.validator.constraints.Range;
 

@@ -1,4 +1,4 @@
-package org.example.testvalidation.validator.messages;
+package org.example.testvalidation.validator.utils;
 
 // all custom error messages here
 /**

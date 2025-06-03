@@ -2,7 +2,7 @@ package org.example.testvalidation.dto;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotNull;
-import org.example.testvalidation.validator.messages.ValidationMessages;
+import org.example.testvalidation.validator.utils.ValidationMessages;
 
 public class EmployeeDto {
     @Valid

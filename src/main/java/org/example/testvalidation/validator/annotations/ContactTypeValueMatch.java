@@ -4,7 +4,7 @@ import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import java.lang.annotation.*;
 import org.example.testvalidation.validator.annotations.handlers.ContactTypeValueMatchValidator;
-import org.example.testvalidation.validator.messages.ValidationMessages;
+import org.example.testvalidation.validator.utils.ValidationMessages;
 
 /**
  * Аннотация для валидации контактов.

@@ -10,7 +10,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import org.example.testvalidation.validator.annotations.ValidDateRange;
 import org.example.testvalidation.validator.annotations.enums.DateComparisonMode;
-import org.example.testvalidation.validator.messages.ValidationMessages;
+import org.example.testvalidation.validator.utils.ValidationMessages;
 
 @SupportedValidationTarget(ValidationTarget.ANNOTATED_ELEMENT)
 public class ValidDateRangeValidator implements ConstraintValidator<ValidDateRange, Object> {

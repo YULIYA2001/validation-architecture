@@ -1,6 +1,7 @@
 package org.example.testvalidation.exceptions;
 
-import java.util.Set;
+import java.util.List;
+import org.example.testvalidation.validator.error.dto.ValidationErrorMarker;
 
 // all custom exceptions in this directory (single file for single exception)
 
@@ -9,14 +10,14 @@ import java.util.Set;
  * Содержит набор сообщений об ошибках валидации.
  */
 public class FailedAnnotationValidationException extends RuntimeException {
-    private final Set<String> errorMessages;
+    private final List<? extends ValidationErrorMarker> errors;
 
-    public FailedAnnotationValidationException(Set<String> errorMessages) {
+    public FailedAnnotationValidationException(List<? extends ValidationErrorMarker> errors) {
         super();
-        this.errorMessages = errorMessages;
+        this.errors = errors;
     }
 
-    public Set<String> getErrorMessages() {
-        return errorMessages;
+    public List<? extends ValidationErrorMarker> getErrors() {
+        return errors;
     }
 }

@@ -4,7 +4,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import org.example.testvalidation.validator.annotations.ContactTypeValueMatch;
-import org.example.testvalidation.validator.messages.ValidationMessages;
+import org.example.testvalidation.validator.utils.ValidationMessages;
 
 @JsonPropertyOrder({ "typeId", "value" })
 @ContactTypeValueMatch

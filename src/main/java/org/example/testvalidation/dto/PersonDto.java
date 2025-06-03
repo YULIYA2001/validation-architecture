@@ -6,7 +6,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.example.testvalidation.validator.annotations.ValidDateRange;
 import org.example.testvalidation.validator.annotations.enums.DateComparisonMode;
-import org.example.testvalidation.validator.messages.ValidationMessages;
+import org.example.testvalidation.validator.utils.ValidationMessages;
 import org.example.testvalidation.validator.utils.ValidationRegexps;
 
 @ValidDateRange(dateBeforeName="birthDate", strictness=DateComparisonMode.EXCLUSIVE)
