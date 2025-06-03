@@ -7,7 +7,10 @@ import org.example.testvalidation.validator.error.dto.ValidationErrorMarker;
 
 /**
  * Исключение, выбрасываемое при неудачной валидации аннотаций.
- * Содержит набор сообщений об ошибках валидации.
+ * <p>
+ * Содержит список ошибок валидации, которые могут относиться как к отдельным полям,
+ * так и к целым объектам (строкам csv).
+ * </p>
  */
 public class FailedAnnotationValidationException extends RuntimeException {
     private final List<? extends ValidationErrorMarker> errors;

@@ -2,6 +2,12 @@ package org.example.testvalidation.validator.error.dto;
 
 import java.util.List;
 
+/**
+ * DTO, представляющий ошибки валидации, сгруппированные по строке (например, при работе с csv-файлами).
+ * <p>
+ * Содержит номер строки и список ошибок уровня поля {@link ValidationErrorFieldDto}, обнаруженных в ней.
+ * </p>
+ */
 public class ValidationErrorRowDto implements ValidationErrorMarker {
     private final int row;
     private final List<ValidationErrorFieldDto> errorFields;
