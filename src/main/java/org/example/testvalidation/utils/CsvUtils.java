@@ -27,10 +27,8 @@ public class CsvUtils {
      * @param separator   символ-разделитель колонок (например, ';' или ',')
      * @param useHeader   использовать ли первую строку как заголовок
      * @return список объектов, прочитанных из CSV
-     * @throws IOException если произошла ошибка чтения или парсинга CSV
      */
-    public static  <T> List<T> readCsv(InputStream inputStream, Class<T> clazz, char separator, boolean useHeader)
-            throws IOException {
+    public static <T> List<T> readCsv(InputStream inputStream, Class<T> clazz, char separator, boolean useHeader) {
         try {
             CsvMapper mapper = new CsvMapper();
             CsvSchema schema = mapper.schemaFor(clazz)

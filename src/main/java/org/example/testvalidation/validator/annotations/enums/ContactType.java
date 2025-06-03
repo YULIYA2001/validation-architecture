@@ -6,7 +6,7 @@ public enum ContactType {
     MOBILE_PHONE(1L),
     EMAIL(2L);
 
-    private Long id;
+    private final Long id;
 
     ContactType(final Long id) {
         this.id = id;

@@ -11,7 +11,6 @@ public class ValidationMessages {
     public static final String DATE_FORMAT_MISMATCH = FORMAT_MISMATCH + " Ожидается: dd.mm.yyyy с допустимыми датами.";
     public static final String FORMAT_MISMATCH_WITH_REGEXP = FORMAT_MISMATCH + " Допустимо: «{regexp}».";
     public static final String WRONG_DATE_RANGE = "Неверно указан интервал дат.";
-    public static final String WRONG_VALUE = "Недопустимое значение.";
     public static final String WRONG_VALUE_FROM_RANGE = "Недопустимое значение. Допустимо от {min} до {max}";
 
     /**
