@@ -13,7 +13,7 @@ public class StudentService extends EntityService {
     }
 
     public String uploadStudent(StudentDto studentDto) throws AccessDeniedException {
-        this.isAccessGranted();
+        this.checkAccessGranted();
         this.validateByAnnotations(studentDto);
         // map dto to entity, save entity
         return this.save(studentDto);

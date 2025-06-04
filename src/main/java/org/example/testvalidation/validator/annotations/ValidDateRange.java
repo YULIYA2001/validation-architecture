@@ -24,7 +24,10 @@ import org.example.testvalidation.validator.annotations.handlers.ValidDateRangeV
  *   <li>{@code EXCLUSIVE} — требует строгое соблюдение порядка</li>
  * </ul>
  *
- * <p>Формат даты должен соответствовать шаблону {@code dd.MM.yyyy}. В противном случае произойдёт ошибка валидации.</p>
+ * <p>
+ *     Формат даты должен соответствовать шаблону {@code dd.MM.yyyy}. В противном случае произойдёт ошибка валидации.
+ *     При использовании данной аннотации проверять формат полей дополнительно не требуется, т.е. @Pattern на поле не нужен
+ * </p>
  */
 @Target( { ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)

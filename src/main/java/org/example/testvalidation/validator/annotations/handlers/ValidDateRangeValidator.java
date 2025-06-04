@@ -8,6 +8,7 @@ import jakarta.validation.constraintvalidation.ValidationTarget;
 import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
 import org.example.testvalidation.validator.annotations.ValidDateRange;
 import org.example.testvalidation.validator.annotations.enums.DateComparisonMode;
 import org.example.testvalidation.validator.utils.ValidationMessages;
@@ -49,16 +50,21 @@ public class ValidDateRangeValidator implements ConstraintValidator<ValidDateRan
                 return compareDates(now, date2, context, String.format(" %s должна быть %s текущей даты.", after, strictness.getAfterMsg()));
             }
             return true;
-
-        } catch (Exception e) {
+        } catch (DateTimeParseException e) {
             buildConstraintViolation(
-                    context, String.format("Одно или несколько полей неверного формата. Для %s, %s", before, after)
+                    context,
+                    String.format(
+                            "Одно или несколько полей неверного формата: %s, %s. %s",
+                            before,
+                            after,
+                            ValidationMessages.DATE_FORMAT_MISMATCH
+                    )
             );
             return false;
         }
     }
 
-    private LocalDate stringToDate(Object value, String fieldName) throws ValidationException {
+    private LocalDate stringToDate(Object value, String fieldName) throws ValidationException, DateTimeParseException {
         if (value == null || fieldName == null || fieldName.isBlank()) return null;
 
         try {
@@ -67,7 +73,7 @@ public class ValidDateRangeValidator implements ConstraintValidator<ValidDateRan
             if (raw instanceof String str && !str.isBlank()) {
                 return LocalDate.parse(str, formatter);
             }
-        } catch (Exception e) {
+        } catch (IllegalAccessException e) {
             throw new ValidationException("Ошибка при извлечении поля '" + fieldName + "': " + e.getMessage());
         }
 

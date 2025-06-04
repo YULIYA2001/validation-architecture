@@ -27,7 +27,6 @@ public class PersonDto {
     private String sex;
 
     @NotBlank(message = ValidationMessages.EMPTY_FIELD)
-    @Pattern(regexp = ValidationRegexps.ANY_DATE_REGEXP, message = ValidationMessages.DATE_FORMAT_MISMATCH)
     private String birthDate;
 
     @NotEmpty(message = ValidationMessages.EMPTY_FIELD)

@@ -26,14 +26,12 @@ public class EntityService {
      * Метод-заглушка, имитирующий проверку прав доступа.
      * В данной реализации доступ всегда разрешён.
      *
-     * @return {@code true}, если доступ разрешён; в противном случае выбрасывается исключение.
      * @throws AccessDeniedException если пользователь не имеет необходимого уровня доступа
      *         или нарушает правила авторизации.
      */
-    public boolean isAccessGranted() throws AccessDeniedException {
+    public void checkAccessGranted() throws AccessDeniedException {
         if (System.nanoTime() < 0) {
             throw new AccessDeniedException("Доступ запрещён: недостаточно прав.");
         }
-        return true;
     }
 }

@@ -15,7 +15,6 @@ public class ValidationRegexps {
     public static final String PERSONAL_NUMBER_REGEXP = "^[0-9A-Z]+$";
     public static final String PASSPORT_SERIA_REGEXP = "^[0-9A-Z]{1,2}\\s?[0-9A-Z]{0,2}$";
     public static final String PASSPORT_SERIAL_NUMBER_REGEXP = "^\\d+$";
-    public static final String ANY_DATE_REGEXP = "^[0-3]\\d\\.[01]\\d\\.\\d{4}$";
     public static final String ANY_MOBILE_PHONE_REGEXP = "^\\+\\d{11,15}$";
 
     /**
