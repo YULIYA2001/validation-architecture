@@ -4,10 +4,10 @@ import jakarta.validation.Valid;
 import jakarta.validation.constraints.*;
 import java.util.ArrayList;
 import java.util.List;
-import org.example.testvalidation.validator.annotations.ValidDateRange;
-import org.example.testvalidation.validator.annotations.enums.DateComparisonMode;
-import org.example.testvalidation.validator.utils.ValidationMessages;
-import org.example.testvalidation.validator.utils.ValidationRegexps;
+import org.example.testvalidation.validation.annotations.ValidDateRange;
+import org.example.testvalidation.validation.annotations.enums.DateComparisonMode;
+import org.example.testvalidation.validation.utils.ValidationMessages;
+import org.example.testvalidation.validation.utils.ValidationRegexps;
 
 @ValidDateRange(dateBeforeName="birthDate", strictness=DateComparisonMode.EXCLUSIVE)
 public class PersonDto {

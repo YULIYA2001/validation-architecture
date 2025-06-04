@@ -1,9 +1,9 @@
 package org.example.testvalidation.dto;
 
 import jakarta.validation.constraints.*;
-import org.example.testvalidation.validator.annotations.ValidDateRange;
-import org.example.testvalidation.validator.utils.ValidationMessages;
-import org.example.testvalidation.validator.utils.ValidationRegexps;
+import org.example.testvalidation.validation.annotations.ValidDateRange;
+import org.example.testvalidation.validation.utils.ValidationMessages;
+import org.example.testvalidation.validation.utils.ValidationRegexps;
 import org.hibernate.validator.constraints.Range;
 
 @ValidDateRange(dateBeforeName="issueDate", dateAfterName="expiryDate")

@@ -1,8 +1,8 @@
 package org.example.testvalidation.dto;
 
 import jakarta.validation.constraints.*;
-import org.example.testvalidation.validator.utils.ValidationMessages;
-import org.example.testvalidation.validator.utils.ValidationRegexps;
+import org.example.testvalidation.validation.utils.ValidationMessages;
+import org.example.testvalidation.validation.utils.ValidationRegexps;
 import org.hibernate.validator.constraints.Range;
 
 public class StudentDto extends PersonDto {

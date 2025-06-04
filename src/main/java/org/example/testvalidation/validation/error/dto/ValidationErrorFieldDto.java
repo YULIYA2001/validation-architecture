@@ -1,4 +1,4 @@
-package org.example.testvalidation.validator.error.dto;
+package org.example.testvalidation.validation.error.dto;
 
 /**
  * DTO, представляющий собой описание ошибки валидации на уровне одного поля.

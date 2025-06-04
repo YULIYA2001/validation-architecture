@@ -1,10 +1,10 @@
-package org.example.testvalidation.validator.annotations;
+package org.example.testvalidation.validation.annotations;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import java.lang.annotation.*;
-import org.example.testvalidation.validator.annotations.enums.DateComparisonMode;
-import org.example.testvalidation.validator.annotations.handlers.ValidDateRangeValidator;
+import org.example.testvalidation.validation.annotations.enums.DateComparisonMode;
+import org.example.testvalidation.validation.annotations.handlers.ValidDateRangeValidator;
 
 /**
  * Аннотация для проверки корректности диапазона дат в строковом формате {@code dd.MM.yyyy}.

@@ -1,13 +1,13 @@
-package org.example.testvalidation.validator.annotations.handlers;
+package org.example.testvalidation.validation.annotations.handlers;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
 import java.util.Objects;
 import java.util.regex.Pattern;
 import org.example.testvalidation.dto.ContactDto;
-import org.example.testvalidation.validator.annotations.ContactTypeValueMatch;
-import org.example.testvalidation.validator.annotations.enums.ContactType;
-import org.example.testvalidation.validator.utils.ValidationRegexps;
+import org.example.testvalidation.validation.annotations.ContactTypeValueMatch;
+import org.example.testvalidation.validation.annotations.enums.ContactType;
+import org.example.testvalidation.validation.utils.ValidationRegexps;
 
 public class ContactTypeValueMatchValidator implements ConstraintValidator<ContactTypeValueMatch, ContactDto> {
     private static final Pattern MOBILE_PHONE_PATTERN = Pattern.compile(ValidationRegexps.ANY_MOBILE_PHONE_REGEXP);

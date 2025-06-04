@@ -1,7 +1,7 @@
 package org.example.testvalidation.exceptions;
 
 import java.util.List;
-import org.example.testvalidation.validator.error.dto.ValidationErrorMarker;
+import org.example.testvalidation.validation.error.dto.ValidationErrorMarker;
 
 // all custom exceptions in this directory (single file for single exception)
 

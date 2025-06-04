@@ -1,11 +1,11 @@
-package org.example.testvalidation.validator;
+package org.example.testvalidation.validation;
 
 import jakarta.validation.ValidationException;
 import java.nio.file.AccessDeniedException;
 import java.util.List;
 import org.example.testvalidation.exceptions.CsvProcessingException;
 import org.example.testvalidation.exceptions.FailedAnnotationValidationException;
-import org.example.testvalidation.validator.error.dto.ValidationErrorMarker;
+import org.example.testvalidation.validation.error.dto.ValidationErrorMarker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;

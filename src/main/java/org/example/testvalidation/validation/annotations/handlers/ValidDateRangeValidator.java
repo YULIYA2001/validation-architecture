@@ -1,4 +1,4 @@
-package org.example.testvalidation.validator.annotations.handlers;
+package org.example.testvalidation.validation.annotations.handlers;
 
 import jakarta.validation.ConstraintValidator;
 import jakarta.validation.ConstraintValidatorContext;
@@ -9,9 +9,9 @@ import java.lang.reflect.Field;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import org.example.testvalidation.validator.annotations.ValidDateRange;
-import org.example.testvalidation.validator.annotations.enums.DateComparisonMode;
-import org.example.testvalidation.validator.utils.ValidationMessages;
+import org.example.testvalidation.validation.annotations.ValidDateRange;
+import org.example.testvalidation.validation.annotations.enums.DateComparisonMode;
+import org.example.testvalidation.validation.utils.ValidationMessages;
 
 @SupportedValidationTarget(ValidationTarget.ANNOTATED_ELEMENT)
 public class ValidDateRangeValidator implements ConstraintValidator<ValidDateRange, Object> {

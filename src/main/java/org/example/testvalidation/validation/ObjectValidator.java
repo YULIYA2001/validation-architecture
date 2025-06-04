@@ -1,4 +1,4 @@
-package org.example.testvalidation.validator;
+package org.example.testvalidation.validation;
 
 import jakarta.validation.ConstraintViolation;
 import jakarta.validation.Validation;
@@ -6,8 +6,8 @@ import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import java.util.*;
 import org.example.testvalidation.exceptions.FailedAnnotationValidationException;
-import org.example.testvalidation.validator.error.dto.ValidationErrorFieldDto;
-import org.example.testvalidation.validator.error.dto.ValidationErrorRowDto;
+import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
+import org.example.testvalidation.validation.error.dto.ValidationErrorRowDto;
 import org.springframework.stereotype.Component;
 
 // !!! формат возвращаемых сообщений "от балды" (не согласован)

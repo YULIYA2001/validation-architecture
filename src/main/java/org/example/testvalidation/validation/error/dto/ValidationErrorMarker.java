@@ -1,4 +1,4 @@
-package org.example.testvalidation.validator.error.dto;
+package org.example.testvalidation.validation.error.dto;
 
 import org.example.testvalidation.exceptions.FailedAnnotationValidationException;
 

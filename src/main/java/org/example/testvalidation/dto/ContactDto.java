@@ -3,8 +3,8 @@ package org.example.testvalidation.dto;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import org.example.testvalidation.validator.annotations.ContactTypeValueMatch;
-import org.example.testvalidation.validator.utils.ValidationMessages;
+import org.example.testvalidation.validation.annotations.ContactTypeValueMatch;
+import org.example.testvalidation.validation.utils.ValidationMessages;
 
 @JsonPropertyOrder({ "typeId", "value" })
 @ContactTypeValueMatch

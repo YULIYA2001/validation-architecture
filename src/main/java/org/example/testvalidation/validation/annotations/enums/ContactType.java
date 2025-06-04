@@ -1,4 +1,4 @@
-package org.example.testvalidation.validator.annotations.enums;
+package org.example.testvalidation.validation.annotations.enums;
 
 import java.util.Arrays;
 

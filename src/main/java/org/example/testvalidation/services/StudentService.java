@@ -2,7 +2,7 @@ package org.example.testvalidation.services;
 
 import java.nio.file.AccessDeniedException;
 import org.example.testvalidation.dto.StudentDto;
-import org.example.testvalidation.validator.ObjectValidator;
+import org.example.testvalidation.validation.ObjectValidator;
 import org.springframework.stereotype.Service;
 
 @Service

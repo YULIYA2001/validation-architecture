@@ -1,10 +1,10 @@
-package org.example.testvalidation.validator.annotations;
+package org.example.testvalidation.validation.annotations;
 
 import jakarta.validation.Constraint;
 import jakarta.validation.Payload;
 import java.lang.annotation.*;
-import org.example.testvalidation.validator.annotations.handlers.ContactTypeValueMatchValidator;
-import org.example.testvalidation.validator.utils.ValidationMessages;
+import org.example.testvalidation.validation.annotations.handlers.ContactTypeValueMatchValidator;
+import org.example.testvalidation.validation.utils.ValidationMessages;
 
 /**
  * Аннотация для валидации контактов.
