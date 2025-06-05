@@ -11,6 +11,7 @@ import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
 import org.example.testvalidation.validation.annotations.ValidDateRange;
 import org.example.testvalidation.validation.annotations.enums.DateComparisonMode;
+import org.example.testvalidation.validation.utils.FieldExtractor;
 import org.example.testvalidation.validation.utils.ValidationMessages;
 
 @SupportedValidationTarget(ValidationTarget.ANNOTATED_ELEMENT)
@@ -50,7 +51,7 @@ public class ValidDateRangeValidator implements ConstraintValidator<ValidDateRan
                 return compareDates(now, date2, context, String.format(" %s должна быть %s текущей даты.", after, strictness.getAfterMsg()));
             }
             return true;
-        } catch (DateTimeParseException e) {
+        } catch (DateTimeParseException | IllegalArgumentException e) {
             buildConstraintViolation(
                     context,
                     String.format(
@@ -60,37 +61,22 @@ public class ValidDateRangeValidator implements ConstraintValidator<ValidDateRan
                             ValidationMessages.DATE_FORMAT_MISMATCH
                     )
             );
-            return false;
         }
+        return false;
     }
 
-    private LocalDate stringToDate(Object value, String fieldName) throws ValidationException, DateTimeParseException {
+    private LocalDate stringToDate(Object value, String fieldName) throws IllegalArgumentException, DateTimeParseException {
         if (value == null || fieldName == null || fieldName.isBlank()) return null;
 
-        try {
-            Field field = findFieldRecursively(value.getClass(), fieldName);
-            Object raw = field.get(value);
-            if (raw instanceof String str && !str.isBlank()) {
-                return LocalDate.parse(str, formatter);
-            }
-        } catch (IllegalAccessException e) {
-            throw new ValidationException("Ошибка при извлечении поля '" + fieldName + "': " + e.getMessage());
+        Object raw = FieldExtractor.findFieldByName(value, fieldName);
+        if (raw instanceof String str && !str.isBlank()) {
+            return LocalDate.parse(str, formatter);
         }
-
-        return null;
-    }
-
-    private Field findFieldRecursively(Class<?> clazz, String fieldName) {
-        while (clazz != null) {
-            try {
-                Field field = clazz.getDeclaredField(fieldName);
-                field.setAccessible(true);
-                return field;
-            } catch (NoSuchFieldException e) {
-                clazz = clazz.getSuperclass();
-            }
-        }
-        throw new IllegalArgumentException("Поле '" + fieldName + "' не найдено в иерархии класса.");
+        throw new IllegalArgumentException(String.format(
+                "Неверный тип поля или отсутствует поле %s. %s",
+                fieldName,
+                ValidationMessages.DATE_FORMAT_MISMATCH
+        ));
     }
 
     private boolean compareDates(LocalDate date1,

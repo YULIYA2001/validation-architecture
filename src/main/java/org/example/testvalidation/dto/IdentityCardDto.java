@@ -27,10 +27,8 @@ public class IdentityCardDto {
     @Pattern(regexp = ValidationRegexps.PASSPORT_SERIAL_NUMBER_REGEXP, message = ValidationMessages.FORMAT_MISMATCH_WITH_REGEXP)
     private String serialNumber;
 
-    @NotBlank(message = ValidationMessages.EMPTY_FIELD)
     private String issueDate;
 
-    @NotBlank(message = ValidationMessages.EMPTY_FIELD)
     private String expiryDate;
 
     public Integer getCitizenship() {
