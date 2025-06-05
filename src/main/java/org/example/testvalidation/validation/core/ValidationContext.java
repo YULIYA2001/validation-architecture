@@ -3,15 +3,16 @@ package org.example.testvalidation.validation.core;
 import java.util.Set;
 import org.example.testvalidation.validation.core.api.BusinessValidator;
 import org.example.testvalidation.validation.core.api.ConditionalValidator;
+import org.example.testvalidation.validation.core.api.ValidationContextKeys;
 
 public class ValidationContext {
-    private final Set<String> validationKeys;
+    private final Set<ValidationContextKeys> validationKeys;
 
-    public ValidationContext(Set<String> validationKeys) {
+    public ValidationContext(Set<ValidationContextKeys> validationKeys) {
         this.validationKeys = validationKeys;
     }
 
-    public static ValidationContext of(String... keys) {
+    public static ValidationContext of(ValidationContextKeys... keys) {
         return new ValidationContext(Set.of(keys));
     }
 

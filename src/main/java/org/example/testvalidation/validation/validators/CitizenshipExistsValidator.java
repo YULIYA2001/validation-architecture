@@ -2,6 +2,7 @@ package org.example.testvalidation.validation.validators;
 
 import java.util.Set;
 import org.example.testvalidation.repositories.CommonTestRepository;
+import org.example.testvalidation.validation.core.api.ValidationContextKeys;
 import org.example.testvalidation.validation.core.api.ValidationResult;
 import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
 import org.example.testvalidation.validation.utils.FieldExtractor;
@@ -38,7 +39,7 @@ public class CitizenshipExistsValidator
     }
 
     @Override
-    public Set<String> getKeys() {
-        return Set.of("checkCitizenship");
+    public Set<ValidationContextKeys> getKeys() {
+        return Set.of(ValidationContextKeys.CITIZENSHIP);
     }
 }
