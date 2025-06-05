@@ -21,5 +21,10 @@ public class ValidationContext {
             return conditional.getKeys().stream().anyMatch(validationKeys::contains);
         }
         return true; // если не ConditionalValidator — допускаем по умолчанию
+        // TODO разобраться с комментарием, что значит по умолчанию
     }
+
+//    public static ValidationContext forAll() {
+//        return new ValidationContext(EnumSet.allOf(ValidationContextKeys.class));
+//    }
 }

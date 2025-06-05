@@ -24,7 +24,13 @@ public class StudentService extends EntityService {
     public String uploadStudent(StudentDto studentDto) throws AccessDeniedException {
         this.checkAccessGranted();
         this.validateByAnnotations(studentDto);
-        this.validateBusinessLogic(studentDto, ValidationContext.of(ValidationContextKeys.CITIZENSHIP));
+        this.validateBusinessLogic(
+                studentDto,
+                ValidationContext.of(
+                        ValidationContextKeys.CITIZENSHIP_EXISTS,
+                        ValidationContextKeys.FACULTY_EXISTS
+                )
+        );
         // map dto to entity, save entity
         return this.save(studentDto);
     }

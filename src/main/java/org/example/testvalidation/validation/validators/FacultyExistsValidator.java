@@ -10,27 +10,27 @@ import org.example.testvalidation.validation.utils.ValidationMessages;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CitizenshipExistsValidator extends AbstractValidator<ValidationErrorFieldDto> {
+public class FacultyExistsValidator extends AbstractValidator<ValidationErrorFieldDto> {
     private final CommonTestRepository repo;
 
-    public CitizenshipExistsValidator(CommonTestRepository repo) {
+    public FacultyExistsValidator(CommonTestRepository repo) {
         this.repo = repo;
     }
 
     @Override
     public ValidationResult<ValidationErrorFieldDto> validate(Object dto) {
-        Integer citizenship = null;
-        Object value = FieldExtractor.findFieldByName(dto, ValidationContextKeys.CITIZENSHIP_EXISTS.getFieldName());
+        String faculty = null;
+        Object value = FieldExtractor.findFieldByName(dto, ValidationContextKeys.FACULTY_EXISTS.getFieldName());
 
-        if (value instanceof Integer i) {
-            citizenship = i;
+        if (value instanceof String s) {
+            faculty = s;
         }
 
         ValidationResult<ValidationErrorFieldDto> result = ValidationResult.ok();
-        if (citizenship != null && !repo.citizenshipExistsByCode(citizenship)) {
+        if (faculty != null && !repo.facultyExistsByName(faculty)) {
             result.addError(new ValidationErrorFieldDto(
-                    ValidationContextKeys.CITIZENSHIP_EXISTS.getFieldName(),
-                    citizenship,
+                    ValidationContextKeys.FACULTY_EXISTS.getFieldName(),
+                    faculty,
                     ValidationMessages.NOT_FOUND_IN_DB)
             );
         }
@@ -39,6 +39,6 @@ public class CitizenshipExistsValidator extends AbstractValidator<ValidationErro
 
     @Override
     public Set<ValidationContextKeys> getKeys() {
-        return Set.of(ValidationContextKeys.CITIZENSHIP_EXISTS);
+        return Set.of(ValidationContextKeys.FACULTY_EXISTS);
     }
 }
