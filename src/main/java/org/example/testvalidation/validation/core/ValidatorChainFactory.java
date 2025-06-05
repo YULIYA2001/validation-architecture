@@ -12,8 +12,8 @@ public class ValidatorChainFactory {
         this.registry = registry;
     }
 
-    public <E extends ValidationErrorMarker> BusinessValidator<E> buildValidatorFor(Object dto) {
-        List<BusinessValidator<E>> validators = registry.getValidatorsFor(dto);
+    public <E extends ValidationErrorMarker> BusinessValidator<E> buildValidatorFor(Object dto, ValidationContext context) {
+        List<BusinessValidator<E>> validators = registry.getValidatorsFor(dto, context);
         return new CompositeValidator<>(validators);
     }
 }

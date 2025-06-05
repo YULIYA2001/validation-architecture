@@ -4,8 +4,8 @@ import org.springframework.stereotype.Repository;
 
 // имитация БД
 @Repository
-public class CitizenshipRepository {
-    public boolean existsByCode(Integer citizenship) {
+public class CommonTestRepository {
+    public boolean citizenshipExistsByCode(Integer citizenship) {
         return citizenship < 500;
     }
 }

@@ -1,18 +1,20 @@
 package org.example.testvalidation.validation.validators;
 
+import java.util.Set;
 import org.example.testvalidation.dto.IdentityCardDto;
 import org.example.testvalidation.dto.PersonDto;
-import org.example.testvalidation.repositories.CitizenshipRepository;
+import org.example.testvalidation.repositories.CommonTestRepository;
+import org.example.testvalidation.validation.core.ConditionalValidator;
 import org.example.testvalidation.validation.core.ValidationResult;
 import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
 import org.example.testvalidation.validation.utils.ValidationMessages;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CitizenshipExistsValidator extends AbstractValidator<ValidationErrorFieldDto> {
-    private final CitizenshipRepository repo;
+public class CitizenshipExistsValidator extends AbstractValidator<ValidationErrorFieldDto> implements ConditionalValidator {
+    private final CommonTestRepository repo;
 
-    public CitizenshipExistsValidator(CitizenshipRepository repo) {
+    public CitizenshipExistsValidator(CommonTestRepository repo) {
         this.repo = repo;
     }
 
@@ -26,7 +28,7 @@ public class CitizenshipExistsValidator extends AbstractValidator<ValidationErro
         }
 
         ValidationResult<ValidationErrorFieldDto> result = ValidationResult.ok();
-        if (citizenship != null && !repo.existsByCode(citizenship)) {
+        if (citizenship != null && !repo.citizenshipExistsByCode(citizenship)) {
             result.addError(new ValidationErrorFieldDto(
                     "citizenship",
                     citizenship,
@@ -36,6 +38,7 @@ public class CitizenshipExistsValidator extends AbstractValidator<ValidationErro
         return result;
     }
 
+    // по-прежнему проверяем, что DTO содержит нужное поле
     @Override
     public boolean supports(Object dto) {
         if (dto instanceof PersonDto person) {
@@ -45,5 +48,10 @@ public class CitizenshipExistsValidator extends AbstractValidator<ValidationErro
             return true;
         }
         return false;
+    }
+
+    @Override
+    public Set<String> getKeys() {
+        return Set.of("checkCitizenship");
     }
 }

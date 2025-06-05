@@ -2,6 +2,7 @@ package org.example.testvalidation.validation;
 
 import org.example.testvalidation.exceptions.FailedBusinessValidationException;
 import org.example.testvalidation.validation.core.BusinessValidator;
+import org.example.testvalidation.validation.core.ValidationContext;
 import org.example.testvalidation.validation.core.ValidationResult;
 import org.example.testvalidation.validation.core.ValidatorChainFactory;
 import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
@@ -18,13 +19,9 @@ public class BusinessObjectValidator {
 
     /**
      * Валидирует на основании бизнес-логики
-     *
-     * @param objectToValidate объект, который необходимо провалидировать
-     * @throws FailedBusinessValidationException если объект не прошёл бизнес-валидацию;
-     *                                           содержит список ошибок валидации
      */
-    public <T> void validate(T objectToValidate) {
-        BusinessValidator<ValidationErrorFieldDto> validator = factory.buildValidatorFor(objectToValidate);
+    public <T> void validate(T objectToValidate, ValidationContext context) {
+        BusinessValidator<ValidationErrorFieldDto> validator = factory.buildValidatorFor(objectToValidate, context);
         ValidationResult<?> result = validator.validate(objectToValidate);
 
         if (!result.isValid()) {

@@ -4,6 +4,7 @@ import java.nio.file.AccessDeniedException;
 import java.util.List;
 import org.example.testvalidation.validation.AnnotationObjectValidator;
 import org.example.testvalidation.validation.BusinessObjectValidator;
+import org.example.testvalidation.validation.core.ValidationContext;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -25,8 +26,8 @@ public class EntityService {
     public <T> void validateByAnnotations(List<T> objects) {
         annotationValidator.validate(objects);
     }
-    public <T> void validateBusinessLogic(T object) {
-        businessValidator.validate(object);
+    public <T> void validateBusinessLogic(T object, ValidationContext context) {
+        businessValidator.validate(object, context);
     }
 
     /**
