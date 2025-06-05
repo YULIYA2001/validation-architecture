@@ -23,7 +23,7 @@ public class AnnotationObjectValidator {
      * @throws FailedAnnotationValidationException если валидация не пройдена
      */
     public <T> void validate(T objectToValidate) {
-        // TODO OrderedChecks.class нужен, чтобы сообщения об ошибках проверки не шли вперемешку
+        // TODO сообщения об ошибках проверки идут вперемешку
         Set<ConstraintViolation<T>> violations = validator.validate(objectToValidate);
         if (!violations.isEmpty()) {
             var errorMessages = violations.stream()
