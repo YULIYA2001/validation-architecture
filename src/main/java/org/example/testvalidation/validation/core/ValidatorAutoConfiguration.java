@@ -7,8 +7,8 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class ValidatorAutoConfiguration {
     @Autowired
-    public void configureValidators(List<BusinessValidator<?, ?>> validators, ValidatorRegistry registry) {
-        for (BusinessValidator<?, ?> validator : validators) {
+    public void configureValidators(List<BusinessValidator<?>> validators, ValidatorRegistry registry) {
+        for (BusinessValidator<?> validator : validators) {
             registry.register(validator);
         }
     }

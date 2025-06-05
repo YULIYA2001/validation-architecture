@@ -12,6 +12,7 @@ public class ValidationMessages {
     public static final String FORMAT_MISMATCH_WITH_REGEXP = FORMAT_MISMATCH + " Допустимо: «{regexp}».";
     public static final String WRONG_DATE_RANGE = "Неверно указан интервал дат.";
     public static final String WRONG_VALUE_FROM_RANGE = "Недопустимое значение. Допустимо от {min} до {max}";
+    public static final String NOT_FOUND_IN_DB = "Не найдено в БД";
 
     /**
      * Закрытый конструктор для предотвращения создания экземпляров класса.

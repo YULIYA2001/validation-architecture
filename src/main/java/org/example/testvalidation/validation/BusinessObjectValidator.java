@@ -20,12 +20,11 @@ public class BusinessObjectValidator {
      * Валидирует на основании бизнес-логики
      *
      * @param objectToValidate объект, который необходимо провалидировать
-     * @param clazz            класс объекта, используемый для получения подходящего валидатора
      * @throws FailedBusinessValidationException если объект не прошёл бизнес-валидацию;
      *                                           содержит список ошибок валидации
      */
-    public <T> void validate(T objectToValidate, Class<T> clazz) {
-        BusinessValidator<T, ValidationErrorFieldDto> validator = factory.buildValidatorFor(clazz);
+    public <T> void validate(T objectToValidate) {
+        BusinessValidator<ValidationErrorFieldDto> validator = factory.buildValidatorFor(objectToValidate);
         ValidationResult<?> result = validator.validate(objectToValidate);
 
         if (!result.isValid()) {

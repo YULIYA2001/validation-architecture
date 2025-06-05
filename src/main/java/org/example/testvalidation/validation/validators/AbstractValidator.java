@@ -1,17 +1,11 @@
 package org.example.testvalidation.validation.validators;
 
 import org.example.testvalidation.validation.core.BusinessValidator;
-import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
+import org.example.testvalidation.validation.error.dto.ValidationErrorMarker;
 
-public abstract class AbstractValidator<T> implements BusinessValidator<T, ValidationErrorFieldDto> {
-    private final Class<T> type;
-
-    protected AbstractValidator(Class<T> type) {
-        this.type = type;
-    }
-
+public abstract class AbstractValidator<E extends ValidationErrorMarker> implements BusinessValidator<E> {
     @Override
-    public Class<T> targetType() {
-        return type;
+    public boolean supports(Object dto) {
+        return true; // по умолчанию применяется ко всем — переопредели в потомках
     }
 }
