@@ -7,7 +7,7 @@ import org.example.testvalidation.validation.core.ValidatorChainFactory;
 import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
 import org.springframework.stereotype.Component;
 
-// !!! формат возвращаемых сообщений "от балды" (не согласован)
+
 @Component
 public class BusinessObjectValidator {
     private final ValidatorChainFactory factory;
@@ -19,8 +19,10 @@ public class BusinessObjectValidator {
     /**
      * Валидирует на основании бизнес-логики
      *
-     * @param objectToValidate Объект обобщенного типа для валидации
-     * @throws FailedBusinessValidationException если валидация не пройдена
+     * @param objectToValidate объект, который необходимо провалидировать
+     * @param clazz            класс объекта, используемый для получения подходящего валидатора
+     * @throws FailedBusinessValidationException если объект не прошёл бизнес-валидацию;
+     *                                           содержит список ошибок валидации
      */
     public <T> void validate(T objectToValidate, Class<T> clazz) {
         BusinessValidator<T, ValidationErrorFieldDto> validator = factory.buildValidatorFor(clazz);

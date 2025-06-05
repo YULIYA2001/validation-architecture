@@ -7,7 +7,7 @@ import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CitizenshipExistsValidator extends AbstractPersonDtoValidator<PersonDto> {
+public class CitizenshipExistsValidator extends AbstractValidator<PersonDto> {
     private final CitizenshipRepository repo;
 
     public CitizenshipExistsValidator(CitizenshipRepository repo) {
