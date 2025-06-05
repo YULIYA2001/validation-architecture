@@ -12,7 +12,7 @@ import org.springframework.stereotype.Component;
 
 // !!! формат возвращаемых сообщений "от балды" (не согласован)
 @Component
-public class ObjectValidator {
+public class AnnotationObjectValidator {
     ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
     Validator validator = validatorFactory.getValidator();
 

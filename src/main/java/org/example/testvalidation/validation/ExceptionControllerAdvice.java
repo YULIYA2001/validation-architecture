@@ -5,6 +5,7 @@ import java.nio.file.AccessDeniedException;
 import java.util.List;
 import org.example.testvalidation.exceptions.CsvProcessingException;
 import org.example.testvalidation.exceptions.FailedAnnotationValidationException;
+import org.example.testvalidation.exceptions.FailedBusinessValidationException;
 import org.example.testvalidation.validation.error.dto.ValidationErrorMarker;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +38,17 @@ public class ExceptionControllerAdvice {
      */
     @ExceptionHandler(FailedAnnotationValidationException.class)
     public ResponseEntity<List<? extends ValidationErrorMarker>> handleException(FailedAnnotationValidationException ex) {
+        return ResponseEntity.badRequest().body(ex.getErrors());
+    }
+
+    /**
+     * Обрабатывает кастомные исключения типа {@link FailedBusinessValidationException}.
+     *
+     * @param ex возникшее исключение с ошибками валидации
+     * @return ResponseEntity с кодом 400 и списком сообщений об ошибках
+     */
+    @ExceptionHandler(FailedBusinessValidationException.class)
+    public ResponseEntity<List<? extends ValidationErrorMarker>> handleException(FailedBusinessValidationException ex) {
         return ResponseEntity.badRequest().body(ex.getErrors());
     }
 

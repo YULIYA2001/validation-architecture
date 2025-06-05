@@ -2,24 +2,31 @@ package org.example.testvalidation.services;
 
 import java.nio.file.AccessDeniedException;
 import java.util.List;
-import org.example.testvalidation.validation.ObjectValidator;
+import org.example.testvalidation.validation.AnnotationObjectValidator;
+import org.example.testvalidation.validation.BusinessObjectValidator;
 import org.springframework.stereotype.Service;
 
 @Service
 public class EntityService {
-    private final ObjectValidator validator;
+    private final AnnotationObjectValidator annotationValidator;
+    private final BusinessObjectValidator businessValidator;
 
-    public EntityService(ObjectValidator validator) {
-        this.validator = validator;
+
+    public EntityService(AnnotationObjectValidator annotationValidator, BusinessObjectValidator businessValidator) {
+        this.annotationValidator = annotationValidator;
+        this.businessValidator = businessValidator;
     }
     public <T> String save(T object) {
         return object.toString();
     }
     public <T> void validateByAnnotations(T object) {
-        validator.validate(object);
+        annotationValidator.validate(object);
     }
     public <T> void validateByAnnotations(List<T> objects) {
-        validator.validate(objects);
+        annotationValidator.validate(objects);
+    }
+    public <T> void validateBusinessLogic(T object, Class<T> clazz) {
+        businessValidator.validate(object, clazz);
     }
 
     /**
