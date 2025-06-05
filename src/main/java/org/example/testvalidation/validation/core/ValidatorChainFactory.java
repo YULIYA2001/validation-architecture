@@ -1,6 +1,7 @@
 package org.example.testvalidation.validation.core;
 
 import java.util.List;
+import org.example.testvalidation.validation.core.api.BusinessValidator;
 import org.example.testvalidation.validation.error.dto.ValidationErrorMarker;
 import org.springframework.stereotype.Component;
 

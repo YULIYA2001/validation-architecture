@@ -1,6 +1,8 @@
 package org.example.testvalidation.validation.core;
 
 import java.util.List;
+import org.example.testvalidation.validation.core.api.BusinessValidator;
+import org.example.testvalidation.validation.core.api.ValidationResult;
 import org.example.testvalidation.validation.error.dto.ValidationErrorMarker;
 
 public class CompositeValidator<E extends ValidationErrorMarker> implements BusinessValidator<E> {

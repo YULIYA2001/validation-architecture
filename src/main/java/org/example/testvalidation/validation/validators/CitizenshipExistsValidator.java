@@ -2,7 +2,7 @@ package org.example.testvalidation.validation.validators;
 
 import java.util.Set;
 import org.example.testvalidation.repositories.CommonTestRepository;
-import org.example.testvalidation.validation.core.ValidationResult;
+import org.example.testvalidation.validation.core.api.ValidationResult;
 import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
 import org.example.testvalidation.validation.utils.FieldExtractor;
 import org.example.testvalidation.validation.utils.ValidationMessages;

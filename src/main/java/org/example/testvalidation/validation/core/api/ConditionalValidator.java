@@ -1,4 +1,4 @@
-package org.example.testvalidation.validation.core;
+package org.example.testvalidation.validation.core.api;
 
 import java.util.Set;
 

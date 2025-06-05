@@ -1,6 +1,8 @@
-package org.example.testvalidation.validation.core;
+package org.example.testvalidation.validation.core.config;
 
 import java.util.List;
+import org.example.testvalidation.validation.core.api.BusinessValidator;
+import org.example.testvalidation.validation.core.ValidatorRegistry;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 
