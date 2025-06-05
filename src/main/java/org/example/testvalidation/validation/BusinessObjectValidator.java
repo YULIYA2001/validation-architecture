@@ -21,7 +21,7 @@ public class BusinessObjectValidator {
      * Валидирует на основании бизнес-логики
      */
     public <T> void validate(T objectToValidate, ValidationContext context) {
-        BusinessValidator<ValidationErrorFieldDto> validator = factory.buildValidatorFor(objectToValidate, context);
+        BusinessValidator<ValidationErrorFieldDto> validator = factory.buildValidatorFor(context);
         ValidationResult<?> result = validator.validate(objectToValidate);
 
         if (!result.isValid()) {

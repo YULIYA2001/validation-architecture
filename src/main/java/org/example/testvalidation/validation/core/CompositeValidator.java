@@ -19,8 +19,4 @@ public class CompositeValidator<E extends ValidationErrorMarker> implements Busi
         return result;
     }
 
-    @Override
-    public boolean supports(Object dto) {
-        return true; // CompositeValidator сам не решает применимость
-    }
 }
