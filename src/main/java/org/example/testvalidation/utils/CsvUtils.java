@@ -7,14 +7,16 @@ import com.fasterxml.jackson.dataformat.csv.CsvSchema;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
+import org.example.testvalidation.dto.ContactDto;
 import org.example.testvalidation.exceptions.CsvProcessingException;
 
+
 /**
- * Утилитный класс для работы с CSV-файлами с использованием Jackson CsvMapper.
+ * Утилитный класс для работы с CSV-файлами с использованием Jackson CsvMapper
  * <p>
- * Позволяет считывать объекты из CSV и сериализовать объекты в CSV.
- * Предполагается использование моделей с аннотациями Jackson для корректного маппинга.
- * </p>
+ * Позволяет считывать объекты из CSV. Предполагается использование моделей с аннотациями Jackson
+ * для корректного маппинга. Например, {@code @JsonPropertyOrder({ "typeId", "value" })} в
+ * {@link ContactDto}
  */
 public class CsvUtils {
     private CsvUtils() {}

@@ -10,7 +10,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ContactService extends EntityService {
 
-
     public ContactService(AnnotationObjectValidator annotationValidator, BusinessObjectValidator businessValidator) {
         super(annotationValidator, businessValidator);
     }

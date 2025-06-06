@@ -14,7 +14,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
-// all needed custom errors here
 @RestControllerAdvice
 public class ExceptionControllerAdvice {
     private static final Logger log = LoggerFactory.getLogger(ExceptionControllerAdvice.class);
@@ -31,7 +30,7 @@ public class ExceptionControllerAdvice {
     }
 
     /**
-     * Обрабатывает кастомные исключения типа {@link FailedAnnotationValidationException}.
+     * Обрабатывает кастомные исключения типа {@link FailedAnnotationValidationException}
      *
      * @param ex возникшее исключение с ошибками валидации
      * @return ResponseEntity с кодом 400 и списком сообщений об ошибках
@@ -54,10 +53,11 @@ public class ExceptionControllerAdvice {
 
     /**
      * Обрабатывает исключения {@link ValidationException}, возникающие при ошибках инициализации валидаторов,
-     * например, если аннотация валидации неправильно сконфигурирована.
+     * например, если аннотация валидации неправильно сконфигурирована
      *
-     * <p>Если в исключении присутствует причина с сообщением, то оно логируется как ошибка (для разработчика).
-     * Клиенту возвращается сообщение об общей внутренней ошибке валидации с HTTP-статусом 500.
+     * <p>
+     *     Если в исключении присутствует причина с сообщением, то оно логируется как ошибка (для разработчика).
+     *     Клиенту возвращается сообщение об общей внутренней ошибке валидации с HTTP-статусом 500.
      *
      * @param ex исключение {@link ValidationException}, перехваченное во время инициализации валидатора
      * @return объект {@link ResponseEntity} с HTTP статусом 500 и сообщением об ошибке
@@ -73,7 +73,7 @@ public class ExceptionControllerAdvice {
     }
 
     /**
-     * Обрабатывает кастомные исключения типа {@link CsvProcessingException}.
+     * Обрабатывает кастомные исключения типа {@link CsvProcessingException}
      *
      * @param ex возникшее исключение при чтении csv в dto
      * @return ResponseEntity с кодом 400 и сообщением об ошибке

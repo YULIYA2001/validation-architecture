@@ -7,15 +7,15 @@ import org.example.testvalidation.validation.annotations.enums.DateComparisonMod
 import org.example.testvalidation.validation.annotations.handlers.ValidDateRangeValidator;
 
 /**
- * Аннотация для проверки корректности диапазона дат в строковом формате {@code dd.MM.yyyy}.
+ * Аннотация для проверки корректности диапазона дат в строковом формате {@code dd.MM.yyyy}
  * <p>
- * Использование возможно на уровне класса — для сравнения двух полей или для сравнения одного поля с текущей датой</li>
+ *     Использование возможно на уровне класса — для сравнения двух полей или для сравнения одного поля с текущей датой</li>
  * <p>
- * Поведение определяется комбинацией параметров {@code dateBeforeName} и {@code dateAfterName}:
+ *     Поведение определяется комбинацией параметров {@code dateBeforeName} и {@code dateAfterName}:
  * <ul>
- *   <li>Если указаны оба — сравниваются два поля</li>
- *   <li>Если указан только {@code dateBeforeName} — сравнивается значение поля с текущей датой: {@code field < now}</li>
- *   <li>Если указан только {@code dateAfterName} — сравнивается значение поля с текущей датой: {@code now < field}</li>
+ *   <li>Если указаны оба — сравниваются два поля: {@code dateBeforeName <= dateAfterName}</li>
+ *   <li>Если указан только {@code dateBeforeName} — сравнивается значение поля с текущей датой: {@code field <= now}</li>
+ *   <li>Если указан только {@code dateAfterName} — сравнивается значение поля с текущей датой: {@code now <= field}</li>
  * </ul>
  *
  * Параметр {@code strictness} определяет уровень строгости сравнения (по умолчанию — нестрогое)
@@ -27,7 +27,7 @@ import org.example.testvalidation.validation.annotations.handlers.ValidDateRange
  * <p>
  *     Формат даты должен соответствовать шаблону {@code dd.MM.yyyy}. В противном случае произойдёт ошибка валидации.
  *     При использовании данной аннотации проверять формат полей, их наличие и пустоту дополнительно не требуется,
- *     т.е. @Pattern, @NotBlank на поле не нужны (при их указании просто будет дублироваться ошибка)
+ *     т.е. @Pattern, @NotBlank на поле дополнительно не нужны (при их указании просто будет дублироваться ошибка)
  */
 @Target( { ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)

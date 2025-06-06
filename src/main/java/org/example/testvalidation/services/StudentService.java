@@ -4,7 +4,7 @@ import java.nio.file.AccessDeniedException;
 import org.example.testvalidation.dto.StudentDto;
 import org.example.testvalidation.validation.AnnotationObjectValidator;
 import org.example.testvalidation.validation.BusinessObjectValidator;
-import org.example.testvalidation.validation.core.ValidationContext;
+import org.example.testvalidation.validation.core.api.ValidationContext;
 import org.example.testvalidation.validation.core.api.ValidationContextKeys;
 import org.springframework.stereotype.Service;
 
@@ -15,12 +15,17 @@ public class StudentService extends EntityService {
         super(annotationValidator, businessValidator);
     }
 
-    // В данном случае настройка следующая:
-    // если не прошла валидация аннотаций, валидация бизнес-логики не пойдет (проброс исключения);
-    // если не прошла валидация бизнес-логики, сохранение не пойдет (проброс исключения);
-    // если прошли обе валидации, начинается сохранение;
-    // причина: смысл логической валидации, если поле пустое.
-    // (если валидации делать две сразу, то во второй нужны доп. проверки на null, blank)
+    /**
+     * В данном примере процесс валидации проходит так:
+     *
+     * <ul>
+     *     <li> валидация аннотаций -> проброс исключения или идем дальше </li>
+     *     <li> валидация бизнес-логики -> проброс исключения или идем дальше </li>
+     *     <li> сохранение </li>
+     * </ul>
+     *
+     * <p> Причина: мало смысла в логической валидации, если не прошли простые проверки (пуста, паттерн, ...)
+     */
     public String uploadStudent(StudentDto studentDto) throws AccessDeniedException {
         this.checkAccessGranted();
         this.validateByAnnotations(studentDto);

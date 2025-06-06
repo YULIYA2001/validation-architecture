@@ -1,16 +1,16 @@
 package org.example.testvalidation.validation.annotations.enums;
 
 /**
- * Режим сравнения дат.
+ * Режим сравнения дат
  */
 public enum DateComparisonMode {
     /**
-     * Нестрогое сравнение (<= или >=).
+     * Нестрогое сравнение (<= или >=)
      */
     INCLUSIVE("не позднее", "не ранее"),
 
     /**
-     * Строгое сравнение (< или >).
+     * Строгое сравнение (< или >)
      */
     EXCLUSIVE("до", "после");
 

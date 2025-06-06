@@ -5,6 +5,11 @@ import org.example.testvalidation.validation.core.api.BusinessValidator;
 import org.example.testvalidation.validation.core.api.ValidationResult;
 import org.example.testvalidation.validation.error.dto.ValidationErrorMarker;
 
+/**
+ * Цепочка валидаторов, объединяющая несколько {@link BusinessValidator}-ов
+ * <p>
+ *     Позволяет последовательно применить цепочку валидаторов к одному объекту и объединить результаты валидации.
+ */
 public class CompositeValidator<E extends ValidationErrorMarker> implements BusinessValidator<E> {
     private final List<BusinessValidator<E>> validators;
 
@@ -12,6 +17,10 @@ public class CompositeValidator<E extends ValidationErrorMarker> implements Busi
         this.validators = validators;
     }
 
+    /**
+     * Последовательно выполняет валидацию всеми валидаторами цепочки. Все ошибки объединяютсяв один
+     * {@link ValidationResult}
+     */
     @Override
     public ValidationResult<E> validate(Object dto) {
         ValidationResult<E> result = ValidationResult.ok();
@@ -20,5 +29,4 @@ public class CompositeValidator<E extends ValidationErrorMarker> implements Busi
         }
         return result;
     }
-
 }

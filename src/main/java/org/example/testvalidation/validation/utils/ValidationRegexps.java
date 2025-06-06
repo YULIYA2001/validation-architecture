@@ -1,9 +1,9 @@
 package org.example.testvalidation.validation.utils;
 
-// all patterns here
 /**
- * Класс содержит константы с регулярными выражениями для валидации.
- * <p>Используется для централизованного хранения регулярных выражений для валидации.</p>
+ * Класс содержит константы с регулярными выражениями для валидации
+ * <p>
+ *     Используется для централизованного хранения регулярных выражений для валидации.
  */
 public class ValidationRegexps {
     public static final String RUSSIAN_NAME_WORD_REGEXP = "[A-ЯЁ][а-яё]*";
@@ -17,8 +17,7 @@ public class ValidationRegexps {
     public static final String PASSPORT_SERIAL_NUMBER_REGEXP = "^\\d+$";
     public static final String ANY_MOBILE_PHONE_REGEXP = "^\\+\\d{11,15}$";
 
-    /**
-     * Закрытый конструктор для предотвращения создания экземпляров класса.
-     */
-    private ValidationRegexps(){}
+    private ValidationRegexps(){
+        // utility class
+    }
 }

@@ -1,9 +1,9 @@
 package org.example.testvalidation.validation.utils;
 
-// all custom error messages here
 /**
  * Класс содержит константы с сообщениями об ошибках валидации.
- * <p>Используется для централизованного хранения текстов ошибок.</p>
+ * <p>
+ *     Используется для централизованного хранения текстов ошибок.
  */
 public class ValidationMessages {
     public static final String EMPTY_FIELD = "Отсутствует поле.";
@@ -14,8 +14,7 @@ public class ValidationMessages {
     public static final String WRONG_VALUE_FROM_RANGE = "Недопустимое значение. Допустимо от {min} до {max}";
     public static final String NOT_FOUND_IN_DB = "Не найдено в БД";
 
-    /**
-     * Закрытый конструктор для предотвращения создания экземпляров класса.
-     */
-    private ValidationMessages(){}
+    private ValidationMessages(){
+        // utility class
+    }
 }

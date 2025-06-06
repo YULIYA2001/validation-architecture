@@ -3,7 +3,9 @@ package org.example.testvalidation.repositories;
 import java.util.List;
 import org.springframework.stereotype.Repository;
 
-// имитация БД
+/**
+ * Класс имитирует работу с БД для всех объектов
+ */
 @Repository
 public class CommonTestRepository {
     public boolean citizenshipExistsByCode(Integer citizenship) {

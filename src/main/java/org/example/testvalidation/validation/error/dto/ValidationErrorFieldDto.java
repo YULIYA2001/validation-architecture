@@ -3,8 +3,7 @@ package org.example.testvalidation.validation.error.dto;
 /**
  * DTO, представляющий собой описание ошибки валидации на уровне одного поля.
  * <p>
- * Содержит информацию о названии поля, его недопустимом значении и сообщении об ошибке.
- * </p>
+ *     Содержит информацию о названии поля, его недопустимом значении и сообщении об ошибке.
  */
 public class ValidationErrorFieldDto implements ValidationErrorMarker {
     private final String field;

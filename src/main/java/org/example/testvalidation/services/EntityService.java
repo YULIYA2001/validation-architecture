@@ -4,14 +4,16 @@ import java.nio.file.AccessDeniedException;
 import java.util.List;
 import org.example.testvalidation.validation.AnnotationObjectValidator;
 import org.example.testvalidation.validation.BusinessObjectValidator;
-import org.example.testvalidation.validation.core.ValidationContext;
+import org.example.testvalidation.validation.core.api.ValidationContext;
 import org.springframework.stereotype.Service;
 
+/**
+ * Сервисный класс, предоставляющий операции валидации и сохранения
+ */
 @Service
 public class EntityService {
     private final AnnotationObjectValidator annotationValidator;
     private final BusinessObjectValidator businessValidator;
-
 
     public EntityService(AnnotationObjectValidator annotationValidator, BusinessObjectValidator businessValidator) {
         this.annotationValidator = annotationValidator;
