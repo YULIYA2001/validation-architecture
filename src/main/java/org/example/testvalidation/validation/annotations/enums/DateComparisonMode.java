@@ -5,12 +5,12 @@ package org.example.testvalidation.validation.annotations.enums;
  */
 public enum DateComparisonMode {
     /**
-     * Нестрогое сравнение (<= или >=)
+     * Нестрогое сравнение (&lt;= или &gt;=)
      */
     INCLUSIVE("не позднее", "не ранее"),
 
     /**
-     * Строгое сравнение (< или >)
+     * Строгое сравнение (&lt; или &gt;)
      */
     EXCLUSIVE("до", "после");
 
