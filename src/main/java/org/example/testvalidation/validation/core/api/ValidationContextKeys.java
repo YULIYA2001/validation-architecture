@@ -1,6 +1,6 @@
 package org.example.testvalidation.validation.core.api;
 
-import org.example.testvalidation.validation.validators.CitizenshipExistsValidator;
+import org.example.testvalidation.validation.validators.CitizenshipExistsConditionalValidator;
 
 /**
  * Перечисление ключей контекста валидации
@@ -14,7 +14,7 @@ public enum ValidationContextKeys {
     /**
      * Ключ, активирующий бизнес-валидацию наличия гражданства для поля с именем {@code "citizenship"}.
      * <p>
-     *     Используется, например, в {@link CitizenshipExistsValidator}
+     *     Используется, например, в {@link CitizenshipExistsConditionalValidator}
      */
     CITIZENSHIP_EXISTS("citizenship"),
     FACULTY_EXISTS("faculty"),

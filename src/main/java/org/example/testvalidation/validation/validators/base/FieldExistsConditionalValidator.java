@@ -18,7 +18,7 @@ import org.example.testvalidation.validation.utils.ValidationMessages;
  *     Подходит для повторного использования с различными типами данных и репозиториями, принимая проверку
  *     в виде {@link Predicate}.
  */
-public abstract class FieldExistsValidator<T> extends AbstractConditionalValidator<ValidationErrorFieldDto> {
+public abstract class FieldExistsConditionalValidator<T> extends AbstractConditionalValidator<ValidationErrorFieldDto> {
     private final ValidationContextKeys key;
     private final Class<T> valueType;
     private final Predicate<T> existenceCheck;
@@ -30,9 +30,9 @@ public abstract class FieldExistsValidator<T> extends AbstractConditionalValidat
      * @param valueType тип значения поля, с которым работает валидатор
      * @param existenceCheck условие, проверяющее наличие значения в источнике данных (например, БД)
      */
-    protected FieldExistsValidator(ValidationContextKeys key,
-                                Class<T> valueType,
-                                Predicate<T> existenceCheck) {
+    protected FieldExistsConditionalValidator(ValidationContextKeys key,
+                                              Class<T> valueType,
+                                              Predicate<T> existenceCheck) {
         this.key = key;
         this.valueType = valueType;
         this.existenceCheck = existenceCheck;

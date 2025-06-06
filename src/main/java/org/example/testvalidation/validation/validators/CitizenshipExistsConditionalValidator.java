@@ -2,12 +2,12 @@ package org.example.testvalidation.validation.validators;
 
 import org.example.testvalidation.repositories.CommonTestRepository;
 import org.example.testvalidation.validation.core.api.ValidationContextKeys;
-import org.example.testvalidation.validation.validators.base.FieldExistsValidator;
+import org.example.testvalidation.validation.validators.base.FieldExistsConditionalValidator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CitizenshipExistsValidator extends FieldExistsValidator<Integer> {
-    public CitizenshipExistsValidator(CommonTestRepository repo) {
+public class CitizenshipExistsConditionalValidator extends FieldExistsConditionalValidator<Integer> {
+    public CitizenshipExistsConditionalValidator(CommonTestRepository repo) {
         super(
                 ValidationContextKeys.CITIZENSHIP_EXISTS,
                 Integer.class,
