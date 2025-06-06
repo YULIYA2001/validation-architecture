@@ -19,8 +19,7 @@ public enum ValidationContextKeys {
     CITIZENSHIP_EXISTS("citizenship"),
     FACULTY_EXISTS("faculty"),
     LAST_NAME("lastName"),
-    FIRST_NAME("firstName"),
-    MOBILE_PHONE_BEL("contact.value");
+    FIRST_NAME("firstName");
 
     private final String fieldName;
 
