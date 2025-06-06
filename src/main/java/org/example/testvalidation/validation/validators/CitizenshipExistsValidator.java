@@ -1,44 +1,17 @@
 package org.example.testvalidation.validation.validators;
 
-import java.util.Set;
 import org.example.testvalidation.repositories.CommonTestRepository;
 import org.example.testvalidation.validation.core.api.ValidationContextKeys;
-import org.example.testvalidation.validation.core.api.ValidationResult;
-import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
-import org.example.testvalidation.validation.utils.FieldExtractor;
-import org.example.testvalidation.validation.utils.ValidationMessages;
+import org.example.testvalidation.validation.validators.base.FieldExistsValidator;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CitizenshipExistsValidator extends AbstractValidator<ValidationErrorFieldDto> {
-    private final CommonTestRepository repo;
-
+public class CitizenshipExistsValidator extends FieldExistsValidator<Integer> {
     public CitizenshipExistsValidator(CommonTestRepository repo) {
-        this.repo = repo;
-    }
-
-    @Override
-    public ValidationResult<ValidationErrorFieldDto> validate(Object dto) {
-        Integer citizenship = null;
-        Object value = FieldExtractor.findFieldByName(dto, ValidationContextKeys.CITIZENSHIP_EXISTS.getFieldName());
-
-        if (value instanceof Integer i) {
-            citizenship = i;
-        }
-
-        ValidationResult<ValidationErrorFieldDto> result = ValidationResult.ok();
-        if (citizenship != null && !repo.citizenshipExistsByCode(citizenship)) {
-            result.addError(new ValidationErrorFieldDto(
-                    ValidationContextKeys.CITIZENSHIP_EXISTS.getFieldName(),
-                    citizenship,
-                    ValidationMessages.NOT_FOUND_IN_DB)
-            );
-        }
-        return result;
-    }
-
-    @Override
-    public Set<ValidationContextKeys> getKeys() {
-        return Set.of(ValidationContextKeys.CITIZENSHIP_EXISTS);
+        super(
+                ValidationContextKeys.CITIZENSHIP_EXISTS,
+                Integer.class,
+                repo::citizenshipExistsByCode
+        );
     }
 }

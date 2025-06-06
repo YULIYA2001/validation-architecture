@@ -1,4 +1,4 @@
-package org.example.testvalidation.validation.validators;
+package org.example.testvalidation.validation.validators.base;
 
 import org.example.testvalidation.validation.core.api.BusinessValidator;
 import org.example.testvalidation.validation.core.api.ConditionalValidator;
