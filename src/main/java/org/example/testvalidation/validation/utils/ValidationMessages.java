@@ -13,6 +13,7 @@ public class ValidationMessages {
     public static final String WRONG_DATE_RANGE = "Неверно указан интервал дат.";
     public static final String WRONG_VALUE_FROM_RANGE = "Недопустимое значение. Допустимо от {min} до {max}";
     public static final String NOT_FOUND_IN_DB = "Не найдено в БД";
+    public static final String ALREADY_EXISTS_IN_DB = "Конфликт. Уже существует в БД";
 
     private ValidationMessages(){
         // utility class

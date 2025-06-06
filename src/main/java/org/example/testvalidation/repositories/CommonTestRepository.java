@@ -15,4 +15,9 @@ public class CommonTestRepository {
     public boolean facultyExistsByName(String faculty) {
         return List.of("ВФ", "ФДПиПО", "ФИТУ", "ИЭФ", "ФКП", "ФКСиС", "ФКТ", "ФРЭ", "ФИБ").contains(faculty);
     }
+
+    @SuppressWarnings("unused")
+    public boolean personExists(String firstName, String lastName) {
+        return true;
+    }
 }

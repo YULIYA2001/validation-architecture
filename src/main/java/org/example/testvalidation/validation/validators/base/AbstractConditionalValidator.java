@@ -14,6 +14,6 @@ import org.example.testvalidation.validation.error.dto.ValidationErrorMarker;
  * <p>
  *     Используется как родительский класс для конкретных валидаторов, например, для проверки полей на существование.
  */
-public abstract class AbstractValidator<E extends ValidationErrorMarker>
+public abstract class AbstractConditionalValidator<E extends ValidationErrorMarker>
         implements BusinessValidator<E>, ConditionalValidator {
 }

@@ -10,7 +10,7 @@ import org.example.testvalidation.validation.utils.FieldExtractor;
 import org.example.testvalidation.validation.utils.ValidationMessages;
 
 /**
- * Универсальный валидатор, существование значения поля в источнике данных по заданному условию
+ * Универсальный абстрактный валидатор - существование значения поля в источнике данных по заданному условию
  * <p>
  *     Основан на ключе контекста {@link ValidationContextKeys}, который указывает имя поля в DTO и определяет,
  *     должен ли валидатор быть активирован в конкретном {@link ValidationContext}.
@@ -18,7 +18,7 @@ import org.example.testvalidation.validation.utils.ValidationMessages;
  *     Подходит для повторного использования с различными типами данных и репозиториями, принимая проверку
  *     в виде {@link Predicate}.
  */
-public class FieldExistsValidator<T> extends AbstractValidator<ValidationErrorFieldDto> {
+public abstract class FieldExistsValidator<T> extends AbstractConditionalValidator<ValidationErrorFieldDto> {
     private final ValidationContextKeys key;
     private final Class<T> valueType;
     private final Predicate<T> existenceCheck;
@@ -30,7 +30,7 @@ public class FieldExistsValidator<T> extends AbstractValidator<ValidationErrorFi
      * @param valueType тип значения поля, с которым работает валидатор
      * @param existenceCheck условие, проверяющее наличие значения в источнике данных (например, БД)
      */
-    public FieldExistsValidator(ValidationContextKeys key,
+    protected FieldExistsValidator(ValidationContextKeys key,
                                 Class<T> valueType,
                                 Predicate<T> existenceCheck) {
         this.key = key;
