@@ -20,4 +20,9 @@ public class CommonTestRepository {
     public boolean personExists(String firstName, String lastName) {
         return true;
     }
+
+    @SuppressWarnings("unused")
+    public boolean studentExists(String firstName, String lastName, String groupNumber) {
+        return true;
+    }
 }

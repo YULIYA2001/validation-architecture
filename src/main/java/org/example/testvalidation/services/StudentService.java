@@ -33,7 +33,8 @@ public class StudentService extends EntityService {
                 studentDto,
                 ValidationContext.of(
                         ValidationContextKeys.CITIZENSHIP_EXISTS,
-                        ValidationContextKeys.FACULTY_EXISTS
+                        ValidationContextKeys.FACULTY_EXISTS,
+                        ValidationContextKeys.STUDENT
                 )
         );
         // map dto to entity, save entity
