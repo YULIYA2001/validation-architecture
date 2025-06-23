@@ -28,7 +28,7 @@ public class StudentExistsConditionalValidator extends AbstractConditionalValida
         String lastName  = null;
         String firstName = null;
         String groupNumber = null;
-        if (rawLastName instanceof String ln && rawFirstName instanceof String fn && rawFirstName instanceof String gn) {
+        if (rawLastName instanceof String ln && rawFirstName instanceof String fn && rawGroup instanceof String gn) {
             lastName = ln;
             firstName = fn;
             groupNumber = gn;
