@@ -6,6 +6,7 @@ import jakarta.validation.Validator;
 import jakarta.validation.ValidatorFactory;
 import java.util.*;
 import org.example.testvalidation.exceptions.FailedAnnotationValidationException;
+import org.example.testvalidation.validation.core.api.ValidationResult;
 import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
 import org.example.testvalidation.validation.error.dto.ValidationErrorRowDto;
 import org.springframework.stereotype.Component;
@@ -24,14 +25,15 @@ public class AnnotationObjectValidator {
     public <T> void validate(T objectToValidate) {
         Set<ConstraintViolation<T>> violations = validator.validate(objectToValidate);
         if (!violations.isEmpty()) {
-            var errorMessages = violations.stream()
-                    .map(violation -> new ValidationErrorFieldDto(
+            ValidationResult<ValidationErrorFieldDto> result = ValidationResult.ok();
+            violations.forEach(violation ->
+                    result.addError(new ValidationErrorFieldDto(
                             getFieldPath(violation),
                             getInvalidValue(violation),
                             violation.getMessage()
                     ))
-                    .toList();
-            throw new FailedAnnotationValidationException(errorMessages);
+            );
+            throw new FailedAnnotationValidationException(result.getErrors());
         }
     }
 
@@ -80,25 +82,20 @@ public class AnnotationObjectValidator {
      *                                             его индексом, в порядке элементов в массиве
      */
     public <T> void validate(List<T> objectsToValidate) {
-        List<ValidationErrorRowDto> errorRowDtos = new ArrayList<>();
+        ValidationResult<ValidationErrorRowDto> result = ValidationResult.ok();
         for (int index = 0; index < objectsToValidate.size(); index++) {
             T object = objectsToValidate.get(index);
             try {
                 validate(object);
             } catch (FailedAnnotationValidationException e) {
-                List<ValidationErrorFieldDto> fieldErrors = e.getErrors().stream()
-                        .map(error -> {
-                            if (!(error instanceof ValidationErrorFieldDto dto)) {
-                                throw new IllegalStateException("Unexpected error type: " + error.getClass());
-                            }
-                            return dto;
-                        })
-                        .toList();
-                errorRowDtos.add(new ValidationErrorRowDto(index, fieldErrors));
+                result.addError(new ValidationErrorRowDto(
+                        index,
+                        (List<ValidationErrorFieldDto>) e.getErrors()
+                ));
             }
         }
-        if (!errorRowDtos.isEmpty()) {
-            throw new FailedAnnotationValidationException(new ArrayList<>(errorRowDtos));
+        if (!result.isValid()) {
+            throw new FailedAnnotationValidationException(result.getErrors());
         }
     }
 }
