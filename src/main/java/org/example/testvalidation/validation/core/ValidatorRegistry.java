@@ -16,16 +16,17 @@ import org.springframework.stereotype.Component;
  *     Регистрация происходит автоматически в {@link ValidatorAutoConfiguration}.
  */
 @Component
-public class ValidatorRegistry<E extends ValidationErrorMarker> {
-    private final List<BusinessValidator<E>> validators = new ArrayList<>();
+public class ValidatorRegistry {
+    private final List<BusinessValidator<?>> validators = new ArrayList<>();
 
-    public void register(BusinessValidator<E> validator) {
+    public void register(BusinessValidator<?> validator) {
         validators.add(validator);
     }
 
-    public List<BusinessValidator<E>> getValidatorsFor(ValidationContext context) {
+    public <E extends ValidationErrorMarker> List<BusinessValidator<E>> getValidatorsFor(ValidationContext context) {
         return validators.stream()
                 .filter(context::allows)
+                .map(v -> (BusinessValidator<E>) v)
                 .toList();
     }
 }
