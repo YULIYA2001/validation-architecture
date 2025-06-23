@@ -11,7 +11,7 @@ public class StudentDto extends PersonDto {
     private String groupNumber;
 
     @NotNull(message = ValidationMessages.EMPTY_FIELD)
-    @Range(min = 0, max=100, message = ValidationMessages.WRONG_VALUE_FROM_RANGE)
+    @Range(min = 0, max = 100, message = ValidationMessages.WRONG_VALUE_FROM_RANGE)
     private Integer educationType;
 
     @NotBlank(message = ValidationMessages.EMPTY_FIELD)

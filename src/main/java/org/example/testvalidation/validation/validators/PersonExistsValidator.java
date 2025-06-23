@@ -9,6 +9,11 @@ import org.example.testvalidation.validation.utils.FieldExtractor;
 import org.example.testvalidation.validation.utils.ValidationMessages;
 import org.springframework.stereotype.Component;
 
+/**
+ * Безусловный (не зависит от контекста) валидатор проверки существования человека в "БД"
+ * Автоматически включается в проверку любого dto, в котором есть (поиск рекурсивный) проверяемые в
+ * валидаторе поля (LAST_NAME, FIRST_NAME)
+ */
 @Component
 public class PersonExistsValidator implements BusinessValidator<ValidationErrorFieldDto> {
     private final CommonTestRepository repo;

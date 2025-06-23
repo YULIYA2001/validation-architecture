@@ -10,7 +10,6 @@ import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
 import org.example.testvalidation.validation.error.dto.ValidationErrorRowDto;
 import org.springframework.stereotype.Component;
 
-// !!! формат возвращаемых сообщений "от балды" (не согласован)
 @Component
 public class AnnotationObjectValidator {
     ValidatorFactory validatorFactory = Validation.buildDefaultValidatorFactory();
@@ -23,7 +22,6 @@ public class AnnotationObjectValidator {
      * @throws FailedAnnotationValidationException если валидация не пройдена
      */
     public <T> void validate(T objectToValidate) {
-        // TODO сообщения об ошибках проверки идут вперемешку (хорошо бы оправить)
         Set<ConstraintViolation<T>> violations = validator.validate(objectToValidate);
         if (!violations.isEmpty()) {
             var errorMessages = violations.stream()
@@ -81,8 +79,6 @@ public class AnnotationObjectValidator {
      *                                             содержит набор ошибок от каждого объекта списка, предваренный
      *                                             его индексом, в порядке элементов в массиве
      */
-    // возможно, понятнее будет писать букву колонки вместо названия поля или и то, и другое
-    // или создать мапу с соответствующими русскими названиями
     public <T> void validate(List<T> objectsToValidate) {
         List<ValidationErrorRowDto> errorRowDtos = new ArrayList<>();
         for (int index = 0; index < objectsToValidate.size(); index++) {

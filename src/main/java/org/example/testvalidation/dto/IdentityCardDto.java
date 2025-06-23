@@ -11,7 +11,7 @@ import org.hibernate.validator.constraints.Range;
 @ValidDateRange(dateAfterName="expiryDate")
 public class IdentityCardDto {
     @NotNull(message = ValidationMessages.EMPTY_FIELD)
-    @Range(min = 100, max=999, message = ValidationMessages.WRONG_VALUE_FROM_RANGE)
+    @Range(min = 100, max = 999, message = ValidationMessages.WRONG_VALUE_FROM_RANGE)
     private Integer citizenship;
 
     @NotBlank(message = ValidationMessages.EMPTY_FIELD)

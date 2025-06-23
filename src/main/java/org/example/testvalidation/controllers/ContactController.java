@@ -21,11 +21,16 @@ public class ContactController {
         this.contactService = contactService;
     }
 
-
     @PostMapping("/uploadCsv")
     public ResponseEntity<String> uploadContactsCsvFile(@RequestParam("file") MultipartFile file) throws IOException {
-        List<ContactDto> dtos = CsvUtils.readCsv(file.getInputStream(), ContactDto.class, ';', false);
-        final String saved = contactService.uploadContacts(dtos);
+        List<ContactDto> dtoList = CsvUtils.readCsv(
+                file.getInputStream(),
+                ContactDto.class,
+                CsvUtils.SEMICOLON_SEPARATOR,
+                false
+        );
+
+        final String saved = contactService.uploadContacts(dtoList);
         return ResponseEntity.ok().body(saved);
     }
 }

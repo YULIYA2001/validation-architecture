@@ -16,12 +16,12 @@ public class CommonTestRepository {
         return List.of("ВФ", "ФДПиПО", "ФИТУ", "ИЭФ", "ФКП", "ФКСиС", "ФКТ", "ФРЭ", "ФИБ").contains(faculty);
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings("all")
     public boolean personExists(String firstName, String lastName) {
         return true;
     }
 
-    @SuppressWarnings("unused")
+    @SuppressWarnings("all")
     public boolean studentExists(String firstName, String lastName, String groupNumber) {
         return true;
     }

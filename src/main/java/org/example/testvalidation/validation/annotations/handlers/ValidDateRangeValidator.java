@@ -43,11 +43,25 @@ public class ValidDateRangeValidator implements ConstraintValidator<ValidDateRan
             LocalDate now = LocalDate.now();
 
             if (date1 != null && date2 != null) {
-                return compareDates(date1, date2, context, String.format(" %s должна быть %s %s.", before, strictness.getAfterMsg(), after));
+                return compareDates(
+                        date1,
+                        date2,
+                        context,
+                        String.format(" %s должна быть %s %s.", before, strictness.getBeforeMsg(), after)
+                );
             } else if (date1 != null) {
-                return compareDates(date1, now, context, String.format(" %s должна быть %s текущей даты.", before, strictness.getBeforeMsg()));
+                return compareDates(
+                        date1,
+                        now,
+                        context,
+                        String.format(" %s должна быть %s текущей даты.", before, strictness.getBeforeMsg())
+                );
             } else if (date2 != null) {
-                return compareDates(now, date2, context, String.format(" %s должна быть %s текущей даты.", after, strictness.getAfterMsg()));
+                return compareDates(
+                        now,
+                        date2,
+                        context,
+                        String.format(" %s должна быть %s текущей даты.", after, strictness.getAfterMsg()));
             }
             return true;
         } catch (DateTimeParseException | IllegalArgumentException e) {

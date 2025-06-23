@@ -10,25 +10,28 @@ import java.util.List;
 import org.example.testvalidation.dto.ContactDto;
 import org.example.testvalidation.exceptions.CsvProcessingException;
 
-
 /**
- * Утилитный класс для работы с CSV-файлами с использованием Jackson CsvMapper
+ * Служебный класс для работы с CSV-файлами с использованием Jackson CsvMapper
  * <p>
  * Позволяет считывать объекты из CSV. Предполагается использование моделей с аннотациями Jackson
  * для корректного маппинга. Например, {@code @JsonPropertyOrder({ "typeId", "value" })} в
  * {@link ContactDto}
  */
 public class CsvUtils {
+    public static final char SEMICOLON_SEPARATOR = ';';
+
     private CsvUtils() {}
 
     /**
-     * Считывает список объектов из CSV-потока.
+     * Преобразовывает список объектов из CSV-потока в список объектов заданного типа
      *
      * @param inputStream входящий поток CSV-данных
      * @param clazz       класс объекта, в который нужно преобразовать строки CSV
      * @param separator   символ-разделитель колонок (например, ';' или ',')
      * @param useHeader   использовать ли первую строку как заголовок
      * @return список объектов, прочитанных из CSV
+     *
+     * @throws CsvProcessingException если при конвертации csv в список объектов произошла ошибка
      */
     public static <T> List<T> readCsv(InputStream inputStream, Class<T> clazz, char separator, boolean useHeader) {
         try {

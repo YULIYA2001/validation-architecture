@@ -14,11 +14,10 @@ public class ContactService extends EntityService {
         super(annotationValidator, businessValidator);
     }
 
-    public String uploadContacts(List<ContactDto> contactDtos) throws AccessDeniedException {
+    public String uploadContacts(List<ContactDto> dtoList) throws AccessDeniedException {
         this.checkAccessGranted();
-        this.validateByAnnotations(contactDtos);
-        // map dto to entity, save entity
-        return this.save(contactDtos);
+        this.validateByAnnotations(dtoList);
+        return this.save(dtoList);
     }
 }
 

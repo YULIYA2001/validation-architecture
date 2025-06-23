@@ -28,7 +28,6 @@ public class PersonDto {
 
     private String birthDate;
 
-    // Возможно, лучше разделить на mobile и email. Здесь просто демонстрация работы с массивом
     @NotEmpty(message = ValidationMessages.EMPTY_FIELD)
     private final List<@NotNull @Valid ContactDto> contacts = new ArrayList<>();
 

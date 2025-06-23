@@ -9,9 +9,9 @@ import org.springframework.util.ReflectionUtils;
 import java.lang.reflect.Field;
 
 /**
- * Утилитный класс для рекурсивного поиска значения поля по имени в объекте и его вложенных объектах.
+ * Служебный класс для рекурсивного поиска значения поля по имени в объекте и его вложенных объектах
  * <p>
- * Позволяет безопасно обходить объекты, включая наследование, избегая циклических ссылок,
+ * Позволяет безопасно обходить объекты, включая наследование, избегая циклических ссылок.
  * <p>
  * Игнорирует статические и синтетические поля, а также поля, к которым невозможно получить доступ.
  */
@@ -24,7 +24,7 @@ public class FieldExtractor {
     }
 
     /**
-     * Ищет значение поля с заданным именем в объекте и его вложенных объектах рекурсивно.
+     * Ищет значение поля с заданным именем в объекте и его вложенных объектах рекурсивно
      *
      * @param root корневой объект, в котором начинается поиск
      * @param fieldName имя поля, которое нужно найти
@@ -35,9 +35,9 @@ public class FieldExtractor {
     }
 
     /**
-     * Рекурсивно ищет значение поля с заданным именем в объекте и его вложенных объектах.
+     * Рекурсивно ищет значение поля с заданным именем в объекте и его вложенных объектах
      * <p>
-     * Использует множество {@code visited} для отслеживания посещённых объектов и предотвращения зацикливания
+     * Использует множество {@code visited} для отслеживания посещённых объектов и предотвращения зацикливания.
      *
      * @param obj объект, в котором производится поиск
      * @param fieldName имя поля, значение которого необходимо найти
@@ -68,36 +68,6 @@ public class FieldExtractor {
 
         return null;
     }
-
-//    // временная версия с логированием пути к полю, для простоты отладки, если что-то пошло не так: поле есть, но оно не находится
-//    private static Object findFieldByName(Object obj, String fieldName, Set<Object> visited, String path) {
-//        if (obj == null || visited.contains(obj)) return null;
-//        visited.add(obj);
-//
-//        for (Field field : getAllFields(obj.getClass())) {
-//            if (!trySetAccessible(field)) continue;
-//
-//            Object value = getFieldValue(field, obj);
-//            if (value == UNAVAILABLE) continue;
-//
-//            String currentPath = path.isEmpty() ? field.getName() : path + "." + field.getName();
-//            LOGGER.trace("Checking field: {}", currentPath);
-//
-//            if (field.getName().equals(fieldName)) {
-//                LOGGER.debug("Found field: {} → value: {}", currentPath, value);
-//                return value;
-//            }
-//
-//            if (shouldRecurse(field.getType(), value)) {
-//                Object nested = findFieldByName(value, fieldName, visited, currentPath);
-//                if (nested != null) {
-//                    return nested;
-//                }
-//            }
-//        }
-//
-//        return null;
-//    }
 
     /**
      * Возвращает список всех полей класса и его суперклассов, исключая статические и синтетические поля
@@ -131,7 +101,7 @@ public class FieldExtractor {
     }
 
     /**
-     * Получает значение указанного поля из объекта.
+     * Получает значение указанного поля из объекта
      * <p>
      * Если доступ к полю не может быть получен из-за IllegalArgumentException, логирует это и возвращает
      * специальный маркер {@code UNAVAILABLE}.
@@ -151,7 +121,7 @@ public class FieldExtractor {
 
     /**
      * Определяет, нужно ли рекурсивно обрабатывать поле с данным типом и значением
-     * Рекурсия выполняется, если значение не null и тип не сложный.
+     * Рекурсия выполняется, если значение не null и тип сложный.
      *
      * @param type  класс типа значения поля
      * @param value значение поля

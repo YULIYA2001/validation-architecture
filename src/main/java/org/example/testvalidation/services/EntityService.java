@@ -28,7 +28,7 @@ public class EntityService {
     public <T> void validateByAnnotations(List<T> objects) {
         annotationValidator.validate(objects);
     }
-    public <T> void validateBusinessLogic(T object, ValidationContext context) {
+    public <T> void  validateBusinessLogic(T object, ValidationContext context) {
         businessValidator.validate(object, context);
     }
 

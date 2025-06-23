@@ -9,7 +9,7 @@ import org.example.testvalidation.validation.annotations.handlers.ValidDateRange
 /**
  * Аннотация для проверки корректности диапазона дат в строковом формате {@code dd.MM.yyyy}
  * <p>
- *     Использование возможно на уровне класса — для сравнения двух полей или для сравнения одного поля с текущей датой
+ *     Использование возможно на уровне класса — для сравнения двух полей или для сравнения одного поля с текущей датой.
  * <p>
  *     Поведение определяется комбинацией параметров {@code dateBeforeName} и {@code dateAfterName}:
  * <ul>
@@ -18,7 +18,7 @@ import org.example.testvalidation.validation.annotations.handlers.ValidDateRange
  *   <li>Если указан только {@code dateAfterName} — сравнивается значение поля с текущей датой: {@code now <= field}</li>
  * </ul>
  *
- * Параметр {@code strictness} определяет уровень строгости сравнения (по умолчанию — нестрогое)
+ * Параметр {@code strictness} определяет уровень строгости сравнения (по умолчанию — нестрогое):
  * <ul>
  *   <li>{@code INCLUSIVE} — допускает равенство дат</li>
  *   <li>{@code EXCLUSIVE} — требует строгое соблюдение порядка</li>
@@ -27,7 +27,8 @@ import org.example.testvalidation.validation.annotations.handlers.ValidDateRange
  * <p>
  *     Формат даты должен соответствовать шаблону {@code dd.MM.yyyy}. В противном случае произойдёт ошибка валидации.
  *     При использовании данной аннотации проверять формат полей, их наличие и пустоту дополнительно не требуется,
- *     т.е. @Pattern, @NotBlank на поле дополнительно не нужны (при их указании просто будет дублироваться ошибка)
+ *     т.е. @Pattern, @NotBlank на поле дополнительно не нужны (при их указании в случае ошибки валидации просто
+ *     продублируется сообщение об ошибке)
  */
 @Target( { ElementType.TYPE })
 @Retention(RetentionPolicy.RUNTIME)

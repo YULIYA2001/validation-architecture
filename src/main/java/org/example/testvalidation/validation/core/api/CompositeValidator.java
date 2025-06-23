@@ -1,8 +1,7 @@
-package org.example.testvalidation.validation.core;
+package org.example.testvalidation.validation.core.api;
 
 import java.util.List;
-import org.example.testvalidation.validation.core.api.BusinessValidator;
-import org.example.testvalidation.validation.core.api.ValidationResult;
+
 import org.example.testvalidation.validation.error.dto.ValidationErrorMarker;
 
 /**
@@ -18,8 +17,8 @@ public class CompositeValidator<E extends ValidationErrorMarker> implements Busi
     }
 
     /**
-     * Последовательно выполняет валидацию всеми валидаторами цепочки. Все ошибки объединяютсяв один
-     * {@link ValidationResult}
+     * Последовательно выполняет валидацию всеми валидаторами цепочки.
+     * <p> Все ошибки объединяются в один {@link ValidationResult}
      */
     @Override
     public ValidationResult<E> validate(Object dto) {

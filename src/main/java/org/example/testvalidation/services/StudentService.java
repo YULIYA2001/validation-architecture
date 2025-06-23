@@ -15,16 +15,11 @@ public class StudentService extends EntityService {
         super(annotationValidator, businessValidator);
     }
 
-    /**
-     * В данном примере процесс валидации проходит так:
-     *
-     * <ul>
-     *     <li> валидация аннотаций -> проброс исключения или идем дальше </li>
-     *     <li> валидация бизнес-логики -> проброс исключения или идем дальше </li>
-     *     <li> сохранение </li>
-     * </ul>
-     *
-     * <p> Причина: мало смысла в логической валидации, если не прошли простые проверки (пуста, паттерн, ...)
+    /*
+     * Процесс валидации проходит так:
+     * - Валидация аннотаций -> проброс исключения или идем дальше
+     * - Валидация бизнес-логики -> проброс исключения или идем дальше
+     * - Сохранение
      */
     public String uploadStudent(StudentDto studentDto) throws AccessDeniedException {
         this.checkAccessGranted();
@@ -37,7 +32,6 @@ public class StudentService extends EntityService {
                         ValidationContextKeys.STUDENT
                 )
         );
-        // map dto to entity, save entity
         return this.save(studentDto);
     }
 }

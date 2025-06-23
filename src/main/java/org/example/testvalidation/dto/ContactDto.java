@@ -16,7 +16,7 @@ public class ContactDto {
     private String value;
 
     public ContactDto() {
-        // для мапинга в Dto с использованием библиотеки jackson
+        // for DTO mapping with Jackson library
     }
 
     public Long getTypeId() {
