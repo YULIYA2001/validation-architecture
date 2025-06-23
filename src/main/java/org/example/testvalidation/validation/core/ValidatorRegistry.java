@@ -17,9 +17,9 @@ import org.springframework.stereotype.Component;
  */
 @Component
 public class ValidatorRegistry {
-    private final List<BusinessValidator<?>> validators = new ArrayList<>();
+    private final List<BusinessValidator<? extends ValidationErrorMarker>> validators = new ArrayList<>();
 
-    public void register(BusinessValidator<?> validator) {
+    public void register(BusinessValidator<? extends ValidationErrorMarker> validator) {
         validators.add(validator);
     }
 
