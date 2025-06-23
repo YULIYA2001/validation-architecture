@@ -8,7 +8,7 @@ import org.example.testvalidation.validation.validators.CitizenshipExistsConditi
  *     Значения данного перечисления используются в {@link ValidationContext}, чтобы определить,
  *     какие валидаторы следует активировать при проверке объекта.
  * <p>
- *     Каждый ключ связан с конкретным именем поля в DTO-объекте.
+ *     Каждый ключ связан с конкретным именем поля {@link ValidationFields} в DTO-объекте.
  */
 public enum ValidationContextKeys {
     /**
