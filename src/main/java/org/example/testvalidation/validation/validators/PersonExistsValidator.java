@@ -3,6 +3,7 @@ package org.example.testvalidation.validation.validators;
 import org.example.testvalidation.repositories.CommonTestRepository;
 import org.example.testvalidation.validation.core.api.BusinessValidator;
 import org.example.testvalidation.validation.core.api.ValidationContextKeys;
+import org.example.testvalidation.validation.core.api.ValidationFields;
 import org.example.testvalidation.validation.core.api.ValidationResult;
 import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
 import org.example.testvalidation.validation.utils.FieldExtractor;
@@ -23,8 +24,8 @@ public class PersonExistsValidator implements BusinessValidator<ValidationErrorF
     }
     @Override
     public ValidationResult<ValidationErrorFieldDto> validate(Object dto) {
-        Object rawLastName = FieldExtractor.findFieldByName(dto, ValidationContextKeys.LAST_NAME.getFieldName());
-        Object rawFirstName = FieldExtractor.findFieldByName(dto, ValidationContextKeys.FIRST_NAME.getFieldName());
+        Object rawLastName = FieldExtractor.findFieldByName(dto, ValidationFields.LAST_NAME.getName());
+        Object rawFirstName = FieldExtractor.findFieldByName(dto, ValidationFields.FIRST_NAME.getName());
 
         String lastName  = null;
         String firstName = null;
@@ -38,8 +39,8 @@ public class PersonExistsValidator implements BusinessValidator<ValidationErrorF
             result.addError(new ValidationErrorFieldDto(
                     String.format(
                             "%s %s",
-                            ValidationContextKeys.LAST_NAME.getFieldName(),
-                            ValidationContextKeys.FIRST_NAME.getFieldName()
+                            ValidationFields.LAST_NAME.getName(),
+                            ValidationFields.FIRST_NAME.getName()
                     ),
                     String.format("Человек: %s %s", lastName, firstName),
                     ValidationMessages.ALREADY_EXISTS_IN_DB)

@@ -3,6 +3,7 @@ package org.example.testvalidation.validation.validators;
 import java.util.Set;
 import org.example.testvalidation.repositories.CommonTestRepository;
 import org.example.testvalidation.validation.core.api.ValidationContextKeys;
+import org.example.testvalidation.validation.core.api.ValidationFields;
 import org.example.testvalidation.validation.core.api.ValidationResult;
 import org.example.testvalidation.validation.error.dto.ValidationErrorFieldDto;
 import org.example.testvalidation.validation.utils.FieldExtractor;
@@ -20,9 +21,9 @@ public class StudentExistsConditionalValidator extends AbstractConditionalValida
 
     @Override
     public ValidationResult<ValidationErrorFieldDto> validate(Object dto) {
-        Object rawLastName = FieldExtractor.findFieldByName(dto, ValidationContextKeys.LAST_NAME.getFieldName());
-        Object rawFirstName = FieldExtractor.findFieldByName(dto, ValidationContextKeys.FIRST_NAME.getFieldName());
-        Object rawGroup = FieldExtractor.findFieldByName(dto, ValidationContextKeys.GROUP_NUMBER.getFieldName());
+        Object rawLastName = FieldExtractor.findFieldByName(dto, ValidationFields.LAST_NAME.getName());
+        Object rawFirstName = FieldExtractor.findFieldByName(dto, ValidationFields.FIRST_NAME.getName());
+        Object rawGroup = FieldExtractor.findFieldByName(dto, ValidationFields.GROUP_NUMBER.getName());
 
         String lastName  = null;
         String firstName = null;
@@ -39,9 +40,9 @@ public class StudentExistsConditionalValidator extends AbstractConditionalValida
             result.addError(new ValidationErrorFieldDto(
                     String.format(
                             "%s %s %s",
-                            ValidationContextKeys.LAST_NAME.getFieldName(),
-                            ValidationContextKeys.FIRST_NAME.getFieldName(),
-                            ValidationContextKeys.GROUP_NUMBER.getFieldName()
+                            ValidationFields.LAST_NAME.getName(),
+                            ValidationFields.FIRST_NAME.getName(),
+                            ValidationFields.GROUP_NUMBER.getName()
                     ),
                     String.format("Студент: %s %s %s", lastName, firstName, groupNumber),
                     ValidationMessages.ALREADY_EXISTS_IN_DB)
